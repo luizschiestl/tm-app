@@ -1,0 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Alata&family=Almarai&family=Comfortaa&family=Raleway:wght@400;500;600;700;800;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body,
+#root {
+  height: 100vh;
+}
