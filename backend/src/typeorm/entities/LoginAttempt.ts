@@ -31,7 +31,7 @@ export class LoginAttempt {
   createdAt: Date;
 
   @BeforeInsert()
-  hashPassword() {
+  fixDate() {
     this.createdAt = new Date();
   }
 }

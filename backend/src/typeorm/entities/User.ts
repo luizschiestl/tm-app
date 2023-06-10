@@ -41,7 +41,12 @@ export class User {
   })
   accountStatus: AccountStatus;
 
-  @Column({ name: 'password_reset_token', nullable: true, unique: true })
+  @Column({
+    name: 'password_reset_token',
+    nullable: true,
+    unique: true,
+    type: 'uuid',
+  })
   passwordResetToken: string;
 
   @OneToMany(() => LoginAttempt, (loginAttempt) => loginAttempt.user)

@@ -12,7 +12,7 @@ import { PasswordModule } from './password/password.module';
     ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
+      host: 'db',
       port: 3306,
       username: 'dev',
       password: 'password',

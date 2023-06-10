@@ -1,8 +1,45 @@
+version: "3.3"
 services:
   mailhog:
     image: mailhog/mailhog
     logging:
-      driver: 'none'  # disable saving logs
+      driver: "none"
     ports:
       - 1025:1025 # smtp server
       - 8025:8025 # web ui
+  db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_DATABASE: "dbtopmed"
+      MYSQL_USER: "dev"
+      MYSQL_PASSWORD: "password"
+      MYSQL_ROOT_PASSWORD: "root"
+    ports:
+      - "3306:3306"
+    expose:
+      - "3306"
+    volumes:
+      - database:/var/lib/mysql
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "3008:3008"
+    depends_on:
+      - db
+    volumes:
+      - ./src:/src
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    volumes:
+      - ./src:/src
+volumes:
+  database:

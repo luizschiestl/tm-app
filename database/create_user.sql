@@ -2,9 +2,9 @@ INSERT INTO users (id, first_name, last_name, email, encrypted_password, phone, 
 VALUES (
     UUID(),
     'Luiz',
-    'Doe',
-    'luiz.doe@example.com',
-    'encrypted_password_two',
+    'Schiestl',
+    'luiz@example.com',
+    '$2b$10$UF4n.IFsgZvBDL/YFVb.eO5VkEZrLUWBNbySHZt4HSHdXmDmlwWXW',
     '1234567890',
-    'luiz.doe'
+    'luiz'
 );
