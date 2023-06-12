@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS users;
+
 CREATE TABLE users (
     id CHAR(36) PRIMARY KEY,
     first_name VARCHAR(50) NOT NULL,

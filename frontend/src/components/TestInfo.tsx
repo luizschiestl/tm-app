@@ -1,4 +1,4 @@
-import { SecondaryButton } from "./layout/SecondaryButton";
+import { Button } from "./layout/Button";
 import graphic from "../assets/graphic.svg";
 import { Aside } from "./layout/Aside";
 
@@ -17,7 +17,7 @@ export function TestInfo() {
           </p>
         </div>
         <img src={graphic} alt="sound waves" className="w-full" />
-        <SecondaryButton>Realizar Teste</SecondaryButton>
+        <Button variant="secondary">Realizar Teste</Button>
       </div>
     </Aside>
   );

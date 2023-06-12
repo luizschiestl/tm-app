@@ -20,7 +20,7 @@ export class PasswordService {
       },
     );
 
-    const frontendUrl = 'http://localhost:5173';
+    const frontendUrl = 'http://localhost:5174';
 
     await this.mailerService.sendMail({
       to: email,

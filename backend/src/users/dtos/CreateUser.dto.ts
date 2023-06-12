@@ -5,5 +5,4 @@ export class CreateUserDto {
   lastName: string;
   email: string;
   phone: string;
-  token: string;
 }

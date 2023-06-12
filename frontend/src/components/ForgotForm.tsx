@@ -1,9 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Main } from "./layout/Main";
-import { PrimaryButton } from "./layout/PrimaryButton";
+import { Button } from "./layout/Button";
 import { useState } from "react";
 import { forgotPassword } from "../services/forgotPasword";
 import mail from "../assets/mail.svg";
+import mailIcon from "../assets/mail-icon.svg";
+import { Input } from "./layout/Input";
 
 export function ForgotForm() {
   const [email, setEmail] = useState("");
@@ -34,7 +36,7 @@ export function ForgotForm() {
               </p>
             </div>
             <img src={mail} alt="mail" className="w-20 my-4" />
-            <PrimaryButton onClick={() => navigate("/")}>Login</PrimaryButton>
+            <Button onClick={() => navigate("/")}>Login</Button>
           </>
         ) : (
           <>
@@ -49,12 +51,13 @@ export function ForgotForm() {
               className="flex flex-col mt-8 gap-4 justify-around items-center"
               onSubmit={handleSubmit}
             >
-              <input
+              <Input
+                iconSrc={mailIcon}
                 type="email"
                 placeholder="Email"
                 onChange={handleChangeEmail}
               />
-              <PrimaryButton type="submit">Enviar</PrimaryButton>
+              <Button type="submit">Enviar</Button>
             </form>
             <Link
               className="font-display text-secondary text-xs text-center w-full hover:text-secondary-light transition-colors"

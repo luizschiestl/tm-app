@@ -12,7 +12,7 @@ import { UsersModule } from 'src/users/users.module';
     UsersModule,
     MailerModule.forRoot({
       transport: {
-        host: 'localhost',
+        host: 'mailhog',
         port: 1025,
       },
       defaults: {

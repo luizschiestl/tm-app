@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import { Main } from "./layout/Main";
-import { PrimaryButton } from "./layout/PrimaryButton";
+import { Button } from "./layout/Button";
 import { FormEvent, useState } from "react";
 import { login } from "../services/login";
-import clsx from "clsx";
+import { Message } from "./layout/Message";
+import { Input } from "./layout/Input";
+import user from "../assets/user.svg";
+import lock from "../assets/lock.svg";
 
 export function LoginForm() {
   const [username, setUsername] = useState("");
@@ -41,25 +44,20 @@ export function LoginForm() {
           className="flex flex-col mt-8 gap-4 justify-around items-center"
           onSubmit={handleSubmit}
         >
-          <input
+          <Input
+            iconSrc={user}
             type="text"
             placeholder="Usuário"
             onChange={handleChangeUsername}
           />
-          <input
+          <Input
+            iconSrc={lock}
             type="password"
             placeholder="Senha"
             onChange={handleChangePassword}
           />
-          <p
-            className={clsx("text-sm text-danger transition-transform", {
-              "scale-y-0 invisible": !error,
-              "scale-y-100 visible": error,
-            })}
-          >
-            {error}
-          </p>
-          <PrimaryButton type="submit">Entrar</PrimaryButton>
+          <Message type="error" message={error} show={!!error} />
+          <Button type="submit">Entrar</Button>
         </form>
         <Link
           className="font-display text-secondary text-xs text-center w-full hover:text-secondary-light transition-colors"

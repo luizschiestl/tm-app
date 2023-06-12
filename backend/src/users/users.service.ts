@@ -25,8 +25,7 @@ export class UsersService {
 
   async store(createUserDto: CreateUserDto) {
     try {
-      const { token, ...data } = createUserDto;
-      const user = this.userRepository.create(data);
+      const user = this.userRepository.create(createUserDto);
       return await this.userRepository.save(user);
     } catch (error) {
       throw new BadRequestException(error.message);

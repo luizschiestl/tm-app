@@ -1,10 +1,12 @@
 import { Main } from "../components/layout/Main";
-import { PrimaryButton } from "../components/layout/PrimaryButton";
+import { Button } from "../components/layout/Button";
 import { FormEvent, useState } from "react";
-import clsx from "clsx";
 import { resetPassword } from "../services/resetPassword";
-import { SecondaryButton } from "../components/layout/SecondaryButton";
 import { useNavigate } from "react-router-dom";
+import { Message } from "../components/layout/Message";
+import { Input } from "../components/layout/Input";
+import lock from "../assets/lock.svg";
+import confirm from "../assets/confirm.svg";
 
 export function PasswordReset() {
   const [password, setPassword] = useState("");
@@ -45,32 +47,31 @@ export function PasswordReset() {
           className="flex flex-col mt-8 gap-4 justify-around items-center"
           onSubmit={handleSubmit}
         >
-          <input
+          <Input
+            iconSrc={lock}
             type="password"
             placeholder="Nova senha"
             value={password}
             onChange={handleChangePassword}
           />
-          <input
+          <Input
+            iconSrc={confirm}
             type="password"
             placeholder="Confirmar senha"
             value={confirmPassword}
             onChange={handleChangeConfirmPassword}
           />
-          <p
-            className={clsx("text-sm text-danger transition-transform", {
-              "scale-y-0 invisible": !error,
-              "scale-y-100 visible": error,
-            })}
-          >
-            {error}
-          </p>
-          <PrimaryButton type="submit" className="w-60">
+          <Message type="error" message={error} show={!!error} />
+          <Button type="submit" className="w-60">
             Redefinir senha
-          </PrimaryButton>
-          <SecondaryButton className="w-60" onClick={() => navigate("/")}>
+          </Button>
+          <Button
+            variant="secondary"
+            className="w-60"
+            onClick={() => navigate("/")}
+          >
             Cancelar
-          </SecondaryButton>
+          </Button>
         </form>
       </div>
     </Main>
